@@ -10,13 +10,16 @@ class SecNotesEditor:
         self.light_mode = False
         
         self.toggle_button = tk.Button(root, text='Dark Mode', command=self.toggle_theme, relief=tk.RAISED)
-        self.toggle_button.place(relx=1.0, x=-10, y=10, anchor='ne')  
+        self.toggle_button.place(relx=1.0, x=-60, y=10, anchor='ne')  
+
+        self.exit_button = tk.Button(root, text='X', command=root.destroy, relief=tk.RAISED)
+        self.exit_button.place(relx=1.0, x=-10, y=10, anchor='ne')
 
         self.info_label = tk.Label(root, text="Welcome to SecNotes!", bg='white', fg='black')
         self.info_label.pack(pady=10)
 
-        self.text_box = tk.Text(root, wrap='word', height=20, width=100)
-        self.text_box.pack(padx=10, pady=10)
+        self.text_box = tk.Text(root, wrap='word', height=70, width=100)
+        self.text_box.pack(padx=10, pady=40)
 
         self.root.bind('<Control-s>', self.save_file)
 
@@ -34,12 +37,14 @@ class SecNotesEditor:
         self.toggle_button.config(text='Dark Mode', bg='lightgray', fg='black')
         self.info_label.config(bg='white', fg='black')
         self.text_box.config(bg='white', fg='black', insertbackground='black')  # Cursor color
+        self.exit_button.config(text='X', bg='lightgray', fg='black')
 
     def set_dark_theme(self):
         self.root.config(bg='#282828')
         self.toggle_button.config(text='Light Mode', bg='#323232', fg='white')
         self.info_label.config(bg='#282828', fg='white')
         self.text_box.config(bg='#383838', fg='white', insertbackground='white')  # Cursor color
+        self.exit_button.config(text='X', bg='#a60000', fg='white')
 
     def save_file(self, event=None):
         file_path = filedialog.asksaveasfilename(defaultextension=".txt",
