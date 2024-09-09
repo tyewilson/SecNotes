@@ -1,0 +1,5 @@
+login screen
+displays files in specified folder
+can choose what file to go into
+GUI
+encryption
